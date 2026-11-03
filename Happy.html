@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17152f">
+  <title>Món quà nhỏ ngày 19/11</title>
+  <style>
+    :root {
+      --gold: #ffe2a0;
+      --pink: #ff8fac;
+      --deep: #17152f;
+      --cream: #fff9ef;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #fff;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(117, 91, 158, .42), transparent 48%),
+        radial-gradient(ellipse at 10% 90%, rgba(206, 83, 130, .18), transparent 38%),
+        linear-gradient(145deg, #111329, #211c43 65%, #382344);
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .stars { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
+    .star {
+      position: absolute; width: 3px; height: 3px; border-radius: 50%;
+      background: #fff4cb; box-shadow: 0 0 10px 2px rgba(255, 232, 173, .55);
+      animation: twinkle 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle { to { opacity: .25; transform: scale(.55); } }
+    .container {
+      position: relative; z-index: 1; width: min(92%, 780px);
+      margin: auto; padding: 44px 0 55px; text-align: center;
+    }
+    .tag {
+      display: inline-block; padding: 9px 16px; border: 1px solid #ffffff35;
+      border-radius: 30px; color: var(--gold); background: #ffffff0d;
+      font-size: 12px; letter-spacing: 3px;
+    }
+    h1 {
+      margin: 24px 0 12px; font: 500 clamp(38px, 8vw, 65px)/1.08 Georgia, serif;
+      text-shadow: 0 8px 35px #0005;
+    }
+    h1 em { display: block; color: var(--gold); font-weight: 400; }
+    .intro { max-width: 550px; margin: 0 auto; color: #ffffffc7; line-height: 1.8; }
+    .name-area { margin: 25px auto 0; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .name-area label { color: #ffffffc9; }
+    .name-area input {
+      width: min(260px, 75vw); padding: 11px 16px; text-align: center;
+      color: white; border: 1px solid #ffffff55; border-radius: 30px;
+      outline: none; background: #ffffff12;
+    }
+    .name-area input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px #ffe2a022; }
+    .name-area input::placeholder { color: #ffffff80; }
+    .gift-area { height: 280px; display: grid; place-items: center; position: relative; margin: 8px auto 0; }
+    .gift-glow {
+      position: absolute; width: 230px; height: 75px; bottom: 36px; border-radius: 50%;
+      background: #ffb66b55; filter: blur(28px); transition: .7s;
+    }
+    .gift {
+      position: relative; width: 205px; height: 195px; border: 0; padding: 0;
+      background: transparent; filter: drop-shadow(0 22px 18px #0005);
+      transition: transform .3s;
+    }
+    .gift:hover { transform: translateY(-6px) rotate(-2deg); }
+    .box {
+      position: absolute; left: 22px; bottom: 4px; width: 160px; height: 116px;
+      border-radius: 7px 7px 13px 13px;
+      background: linear-gradient(110deg, #b52e5d, #f16c8c 50%, #b52e5d);
+    }
+    .box::before, .lid::before {
+      content: ""; position: absolute; left: 66px; top: 0; width: 28px; height: 100%;
+      background: linear-gradient(90deg, #d99b4b, #ffedb5, #d99b4b);
+    }
+    .lid {
+      position: absolute; z-index: 2; left: 14px; bottom: 116px; width: 176px; height: 38px;
+      border-radius: 7px; background: linear-gradient(110deg, #c73a69, #ff91a7 50%, #c73a69);
+      transform-origin: 12% 90%; transition: transform .85s cubic-bezier(.2,.8,.2,1);
+    }
+    .bow {
+      position: absolute; z-index: 3; left: 82px; bottom: 151px; width: 42px; height: 30px;
+      transition: .6s;
+    }
+    .bow::before, .bow::after {
+      content: ""; position: absolute; top: 0; width: 23px; height: 19px;
+      border: 6px solid var(--gold); border-radius: 80% 80% 20% 80%;
+    }
+    .bow::before { left: -2px; transform: rotate(25deg); }
+    .bow::after { right: -2px; transform: scaleX(-1) rotate(25deg); }
+    .bow i { position: absolute; z-index: 2; left: 16px; top: 8px; width: 11px; height: 11px; border-radius: 50%; background: #fff0bd; }
+    .gift-hint { position: absolute; bottom: 0; color: #ffffffa8; font-size: 14px; animation: hint 1.6s infinite alternate; }
+    @keyframes hint { to { opacity: .45; transform: translateY(4px); } }
+    .gift-area.opened .lid { transform: translate(-24px, -75px) rotate(-28deg); }
+    .gift-area.opened .bow { transform: translate(-24px, -75px) rotate(-28deg); opacity: 0; }
+    .gift-area.opened .gift-glow { transform: scale(1.6); opacity: .8; }
+    .gift-area.opened .gift-hint { opacity: 0; }
+    .btn {
+      min-height: 48px; padding: 0 24px; border: 0; border-radius: 30px;
+      font-weight: 700; transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .primary { color: #39253c; background: linear-gradient(110deg, #ffe8b4, #efbd70); box-shadow: 0 9px 28px #ecac643d; }
+    .secondary { color: #fff1d6; border: 1px solid #ffffff45; background: #ffffff12; }
+    #openButton[hidden] { display: none; }
+    .letter-wrap { display: none; width: min(100%, 620px); margin: 25px auto 0; }
+    .letter-wrap.visible { display: block; animation: appear .8s ease both; }
+    @keyframes appear { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+    .letter {
+      padding: clamp(24px, 6vw, 42px); border: 1px solid #ffffffb0; border-radius: 22px;
+      color: #554757; text-align: left; background: linear-gradient(145deg, #fffefa, var(--cream));
+      box-shadow: 0 22px 65px #0005, inset 0 0 0 7px #d8ad7418;
+    }
+    .eyebrow { margin: 0 0 12px; color: #b47a42; font-size: 12px; font-weight: 800; letter-spacing: 3px; }
+    .letter h2 { margin: 0 0 18px; color: #654456; font: 500 clamp(29px, 6vw, 40px)/1.2 Georgia, serif; }
+    .letter h2 span { color: #c65e79; font-style: italic; overflow-wrap: anywhere; }
+    .letter p { color: #625967; line-height: 1.85; margin: 0 0 14px; }
+    .sign { margin-top: 22px; color: #96615b; text-align: right; font: italic 20px Georgia, serif; }
+    .sign strong { display: block; margin-top: 6px; color: #c16380; font-size: 25px; font-weight: 500; }
+    .actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .footer { margin-top: 35px; color: #ffffff78; font-size: 13px; }
+    .toast {
+      position: fixed; z-index: 5; left: 50%; bottom: 22px; transform: translate(-50%, 15px);
+      padding: 11px 17px; color: #3c3040; background: #fff0cc; border-radius: 30px;
+      box-shadow: 0 8px 25px #0004; opacity: 0; transition: .25s; pointer-events: none;
+      width: max-content; max-width: 90%;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    .heart {
+      position: fixed; z-index: 4; bottom: -35px; pointer-events: none; color: var(--pink);
+      text-shadow: 0 0 12px #ff80a988; animation: float 5s linear forwards;
+    }
+    @keyframes float { to { transform: translateY(-110vh) rotate(35deg); opacity: 0; } }
+    @media (max-width: 520px) {
+      .container { padding-top: 55px; }
+      .gift-area { height: 250px; }
+      .gift { transform: scale(.9); }
+      .gift:hover { transform: translateY(-5px) scale(.9); }
+      .gift-area.opened .gift { transform: scale(.88); }
+      .actions .btn { flex: 1 1 180px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars" aria-hidden="true"></div>
+  <main class="container">
+    <div class="tag">✦ 19 THÁNG 11 · MEN'S DAY ✦</div>
+    <h1>Một món quà nhỏ <em>dành cho bạn</em></h1>
+    <p class="intro">Có những điều không cần quá lớn lao, chỉ cần được gửi đi bằng sự chân thành. Hôm nay, món quà này là dành cho bạn!</p>
+
+    <div class="name-area">
+      <label for="recipientName">Gửi đến:</label>
+      <input id="recipientName" type="text" maxlength="40" placeholder="Nhập tên người nhận..." value="Tên gì cu???" autocomplete="off">
+    </div>
+
+    <section class="gift-area" id="giftArea" aria-label="Hộp quà 19 tháng 11">
+      <div class="gift-glow"></div>
+      <button class="gift" id="giftButton" type="button" aria-label="Chạm để mở hộp quà">
+        <span class="bow"><i></i></span><span class="lid"></span><span class="box"></span>
+      </button>
+      <div class="gift-hint">✧ Chạm vào hộp quà để khám phá ✧</div>
+    </section>
+    <button class="btn primary" id="openButton" type="button">✧ Mở món quà ✧</button>
+
+    <section class="letter-wrap" id="letterWrap" aria-live="polite">
+      <article class="letter">
+        <p class="eyebrow">A LITTLE NOTE FOR YOU · 19.11</p>
+        <h2>Gửi <span id="letterName">Tên gì cu???</span>,</h2>
+        <p>Nhân ngày Quốc tế Nam giới 19/11, chúc m luôn bị chich some</p>
+        <p>Mong rằng mỗi ngày của m đều như cc!, nhưng luôn có vong ở bên, còn t có siêu bạn thân t òii </p>
+        <p>Để t đi phát cơm cho chúng m nhé lũ tuất!</p>
+        <p>CHÚC M LUÔN TRỞ THÀNH LỐP! Biết tặng quà cho t kh tuất </p>
+        <div class="sign">Thân gửi,<strong>Từ anh Phúc đẹp trai cu bự!!!</strong></div>
+      </article>
+      <div class="actions">
+        <button class="btn primary" id="copyButton" type="button">▣ Sao chép lời chúc</button>
+        <button class="btn secondary" id="againButton" type="button">↻ Gói quà lại</button>
+      </div>
+    </section>
+    <footer class="footer">Được gửi đi bằng sự chân thành <span style="color:#ff91aa">♥</span> · Made with care</footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      "use strict";
+      const byId = (id) => document.getElementById(id);
+      const stars = byId("stars");
+      const giftArea = byId("giftArea");
+      const giftButton = byId("giftButton");
+      const openButton = byId("openButton");
+      const letterWrap = byId("letterWrap");
+      const recipientInput = byId("recipientName");
+      const letterName = byId("letterName");
+      const toast = byId("toast");
+      let isOpened = false;
+      let toastTimer = null;
+
+      // Tạo nền sao lấp lánh.
+      for (let i = 0; i < 65; i += 1) {
+        const star = document.createElement("span");
+        star.className = "star";
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.animationDelay = `${Math.random() * 3}s`;
+        star.style.animationDuration = `${2 + Math.random() * 3}s`;
+        stars.appendChild(star);
+      }
+
+      function getName() {
+        return recipientInput.value.trim() || "Người bạn đặc biệt";
+      }
+
+      function updateName() {
+        letterName.textContent = getName();
+      }
+      recipientInput.addEventListener("input", updateName);
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2200);
+      }
+
+      function createHearts() {
+        const symbols = ["♥", "♡", "✦", "✧"];
+        for (let i = 0; i < 14; i += 1) {
+          window.setTimeout(() => {
+            const heart = document.createElement("span");
+            heart.className = "heart";
+            heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            heart.style.left = `${5 + Math.random() * 90}%`;
+            heart.style.fontSize = `${14 + Math.random() * 18}px`;
+            heart.style.animationDuration = `${4 + Math.random() * 3}s`;
+            document.body.appendChild(heart);
+            heart.addEventListener("animationend", () => heart.remove(), { once: true });
+          }, i * 100);
+        }
+      }
+
+      function openGift() {
+        updateName();
+        if (isOpened) {
+          letterWrap.scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
+        isOpened = true;
+        giftArea.classList.add("opened");
+        openButton.hidden = true;
+        createHearts();
+        window.setTimeout(() => {
+          letterWrap.classList.add("visible");
+          letterWrap.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 500);
+      }
+      giftButton.addEventListener("click", openGift);
+      openButton.addEventListener("click", openGift);
+
+      function getGreeting() {
+        return `Gửi ${getName()},\n\nNhân ngày Quốc tế Nam giới 19/11, chúc thằng em guộc của bố luôn mạnh mẽ nhưng cũng đừng quên dịu dàng với chính mình; luôn tự tin theo đuổi điều mình thích và đủ kiên trì để chạm đến những điều mong muốn.\n\nMong rằng mỗi ngày của bạn đều có thêm một lý do để mỉm cười, có những người bạn chân thành bên cạnh, còn t có siêu bthan và thật nhiều khoảnh khắc đáng nhớ. Dù cuộc sống đôi khi có bận rộn hay thử thách, hãy luôn tin vào bản thân nhé!\n\nCảm ơn vì đã là một người bạn tuyệt vời. Chúc bạn một ngày 19/11 thật vui vẻ, ý nghĩa và KHÔNG LÀM LỐP GIỐNG B NÀO ĐÓ!\n\nThân gửi,\nPhắc cục đẹp trai 💛`;
+      }
+
+      byId("copyButton").addEventListener("click", async () => {
+        const text = getGreeting();
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            const area = document.createElement("textarea");
+            area.value = text;
+            area.setAttribute("readonly", "");
+            area.style.position = "fixed";
+            area.style.left = "-9999px";
+            document.body.appendChild(area);
+            area.select();
+            const copied = document.execCommand("copy");
+            area.remove();
+            if (!copied) throw new Error("Trình duyệt không cho phép sao chép.");
+          }
+          showToast("Đã sao chép lời chúc! 💛");
+        } catch (error) {
+          console.error(error);
+          showToast("Không sao chép được. Bạn hãy thử chọn và sao chép thủ công nhé!");
+        }
+      });
+
+      byId("againButton").addEventListener("click", () => {
+        isOpened = false;
+        giftArea.classList.remove("opened");
+        letterWrap.classList.remove("visible");
+        openButton.hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        showToast("Món quà đã được gói lại! 🎁");
+      });
+    })();
+  </script>
+</body>
+</html>
