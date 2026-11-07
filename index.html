@@ -1,0 +1,631 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#100d27">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="Một món quà nhỏ dành cho bạn · 19 tháng 11">
+  <title>Món quà nhỏ ngày 19/11</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --gold: #f7df9b;
+      --gold-bright: #fff1c5;
+      --pink: #ff9dbb;
+      --violet: #a99aff;
+      --deep: #100d27;
+      --cream: #fff9ef;
+      --glass: rgba(255,255,255,.075);
+      --line: rgba(236,224,255,.2);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #fff;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(ellipse at 50% -10%, rgba(130,104,214,.36), transparent 48%),
+        radial-gradient(ellipse at 8% 82%, rgba(207,93,164,.17), transparent 34%),
+        radial-gradient(ellipse at 92% 65%, rgba(91,133,219,.16), transparent 35%),
+        linear-gradient(145deg, #0b0a1d 0%, #171332 48%, #25183e 100%);
+      background-attachment: fixed;
+    }
+
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::before {
+      opacity: .22;
+      background-image:
+        radial-gradient(1px 1px at 12% 18%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 78% 28%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 42% 72%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 88% 86%, #fff 99%, transparent);
+      background-size: 260px 260px, 340px 340px, 220px 220px, 300px 300px;
+      animation: skyDrift 34s linear infinite;
+    }
+    body::after {
+      background: radial-gradient(ellipse at center, transparent 35%, rgba(4,3,15,.38) 100%);
+    }
+
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible {
+      outline: 2px solid var(--gold-bright);
+      outline-offset: 4px;
+    }
+
+    .stars {
+      position: fixed; inset: 0; overflow: hidden;
+      pointer-events: none; z-index: 1;
+    }
+    .star {
+      position: absolute; width: 3px; height: 3px; border-radius: 50%;
+      background: #fff4cb;
+      box-shadow: 0 0 10px 2px rgba(255,232,173,.62);
+      animation: twinkle 2.8s ease-in-out infinite alternate;
+    }
+    .aurora {
+      position: fixed; z-index: 0; pointer-events: none;
+      width: 48vw; height: 48vw; min-width: 360px; min-height: 360px;
+      border-radius: 50%; filter: blur(85px); opacity: .13;
+      background: #8270ff; top: 12%; left: -18%;
+      animation: auroraFloat 16s ease-in-out infinite alternate;
+    }
+    .aurora.second {
+      top: auto; left: auto; right: -20%; bottom: 2%;
+      background: #e36cae; animation-delay: -7s;
+    }
+
+    .container {
+      position: relative; z-index: 2;
+      width: min(92%, 820px); margin: auto;
+      padding: 48px 0 58px; text-align: center;
+    }
+    .music-toggle {
+      position: fixed; z-index: 8; top: 18px; right: 18px;
+      display: inline-flex; align-items: center; gap: 9px;
+      min-height: 42px; padding: 0 15px;
+      border: 1px solid rgba(239,225,255,.22); border-radius: 999px;
+      color: #f8edff; background: rgba(20,15,45,.72);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 8px 28px rgba(0,0,0,.22);
+      transition: background .3s, border-color .3s, transform .3s;
+    }
+    .music-toggle:hover { transform: translateY(-2px); border-color: #f7df9b88; background: rgba(44,31,75,.86); }
+    .music-icon { color: var(--gold); font-size: 16px; }
+    .music-toggle[aria-pressed="true"] .music-icon { animation: musicPulse 1.1s ease-in-out infinite; }
+
+    .tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 17px; border: 1px solid rgba(255,255,255,.17);
+      border-radius: 30px; color: var(--gold);
+      background: rgba(255,255,255,.055);
+      box-shadow: inset 0 0 18px rgba(255,255,255,.025), 0 8px 28px rgba(0,0,0,.12);
+      font-size: 11px; letter-spacing: 3px;
+      backdrop-filter: blur(10px);
+    }
+    h1 {
+      margin: 25px 0 13px;
+      font: 500 clamp(39px, 8vw, 68px)/1.08 Georgia, serif;
+      letter-spacing: -.8px;
+      text-shadow: 0 8px 38px rgba(0,0,0,.42);
+    }
+    h1 em {
+      display: block; margin-top: 5px;
+      color: var(--gold); font-weight: 400;
+      text-shadow: 0 0 28px rgba(247,223,155,.22);
+    }
+    .intro {
+      max-width: 560px; margin: 0 auto;
+      color: rgba(255,255,255,.74); line-height: 1.85;
+    }
+
+    .name-area {
+      margin: 27px auto 0; display: flex; justify-content: center;
+      align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .name-area label { color: rgba(255,255,255,.78); }
+    .name-area input {
+      width: min(270px, 75vw); padding: 12px 17px; text-align: center;
+      color: white; border: 1px solid rgba(255,255,255,.25);
+      border-radius: 30px; outline: none; background: rgba(255,255,255,.075);
+      box-shadow: inset 0 1px 8px rgba(0,0,0,.12);
+      transition: border-color .3s, background .3s, box-shadow .3s;
+    }
+    .name-area input:focus {
+      border-color: var(--gold); background: rgba(255,255,255,.11);
+      box-shadow: 0 0 0 4px rgba(247,223,155,.1), 0 0 24px rgba(247,223,155,.12);
+    }
+    .name-area input::placeholder { color: rgba(255,255,255,.48); }
+
+    .gift-area {
+      height: 300px; display: grid; place-items: center;
+      position: relative; margin: 5px auto 0;
+      perspective: 900px;
+    }
+    .gift-glow {
+      position: absolute; width: 250px; height: 85px; bottom: 35px;
+      border-radius: 50%; background: rgba(255,190,112,.34);
+      filter: blur(35px); transition: transform 1s, opacity 1s;
+    }
+    .gift-glow::after {
+      content: ""; position: absolute; inset: -35px;
+      border: 1px solid rgba(255,226,160,.15); border-radius: 50%;
+      transform: scaleY(.35);
+    }
+    .gift {
+      position: relative; width: 205px; height: 195px;
+      border: 0; padding: 0; background: transparent;
+      filter: drop-shadow(0 24px 22px rgba(0,0,0,.42));
+      transition: transform .55s cubic-bezier(.2,.8,.2,1), filter .5s;
+      animation: giftHover 4.5s ease-in-out infinite;
+    }
+    .gift:hover { transform: translateY(-8px) rotate(-2deg) scale(1.035); filter: drop-shadow(0 28px 28px rgba(0,0,0,.48)); }
+    .box {
+      position: absolute; left: 22px; bottom: 4px; width: 160px; height: 116px;
+      border-radius: 7px 7px 13px 13px;
+      background: linear-gradient(110deg, #753c9d, #c16cae 48%, #75409c);
+      box-shadow: inset 0 2px 12px rgba(255,255,255,.22), inset 0 -10px 20px rgba(35,10,63,.2);
+    }
+    .box::before, .lid::before {
+      content: ""; position: absolute; left: 66px; top: 0; width: 28px; height: 100%;
+      background: linear-gradient(90deg, #c18b49, #fff0bd, #c18b49);
+      box-shadow: 0 0 12px rgba(255,224,153,.2);
+    }
+    .lid {
+      position: absolute; z-index: 2; left: 14px; bottom: 116px;
+      width: 176px; height: 38px; border-radius: 7px;
+      background: linear-gradient(110deg, #8550aa, #df91c6 50%, #8550aa);
+      box-shadow: inset 0 2px 8px rgba(255,255,255,.24), 0 5px 14px rgba(0,0,0,.16);
+      transform-origin: 12% 90%;
+      transition: transform 1s cubic-bezier(.18,.82,.22,1), opacity .8s;
+    }
+    .bow { position: absolute; z-index: 3; left: 82px; bottom: 151px; width: 42px; height: 30px; transition: .8s; }
+    .bow::before, .bow::after {
+      content: ""; position: absolute; top: 0; width: 23px; height: 19px;
+      border: 6px solid var(--gold); border-radius: 80% 80% 20% 80%;
+      filter: drop-shadow(0 0 5px rgba(255,225,157,.42));
+    }
+    .bow::before { left: -2px; transform: rotate(25deg); }
+    .bow::after { right: -2px; transform: scaleX(-1) rotate(25deg); }
+    .bow i { position: absolute; z-index: 2; left: 16px; top: 8px; width: 11px; height: 11px; border-radius: 50%; background: #fff0bd; }
+    .gift-hint {
+      position: absolute; bottom: 0; color: rgba(255,255,255,.68);
+      font-size: 13px; letter-spacing: .5px; animation: hint 1.8s infinite alternate;
+    }
+    .gift-area.opened .lid { transform: translate(-28px,-82px) rotate(-34deg); }
+    .gift-area.opened .bow { transform: translate(-28px,-82px) rotate(-34deg); opacity: 0; }
+    .gift-area.opened .gift-glow { transform: scale(1.85); opacity: .95; }
+    .gift-area.opened .gift-hint { opacity: 0; }
+    .gift-area.opened .gift { animation: none; transform: translateY(4px) scale(.98); }
+
+    .btn {
+      min-height: 49px; padding: 0 25px; border: 0; border-radius: 30px;
+      font-weight: 700; letter-spacing: .2px;
+      transition: transform .28s, box-shadow .28s, background .28s;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .primary {
+      color: #30213f; background: linear-gradient(110deg, #fff0c2, #e8bc78);
+      box-shadow: 0 10px 30px rgba(226,177,106,.25), inset 0 1px 0 rgba(255,255,255,.75);
+    }
+    .primary:hover { box-shadow: 0 14px 36px rgba(226,177,106,.36), inset 0 1px 0 rgba(255,255,255,.8); }
+    .secondary {
+      color: #fff1d6; border: 1px solid rgba(255,255,255,.3);
+      background: rgba(255,255,255,.08); backdrop-filter: blur(10px);
+    }
+    #openButton[hidden] { display: none; }
+
+    .letter-wrap {
+      display: block; width: min(100%, 640px); margin: 27px auto 0;
+      opacity: 0; visibility: hidden; transform: translateY(28px) scale(.985);
+      max-height: 0; overflow: hidden;
+      transition: opacity .85s ease, transform .85s cubic-bezier(.2,.8,.2,1),
+                  max-height 1s ease, visibility .85s;
+    }
+    .letter-wrap.visible {
+      opacity: 1; visibility: visible; transform: translateY(0) scale(1);
+      max-height: 1100px; overflow: visible;
+    }
+    .letter {
+      position: relative; overflow: hidden;
+      padding: clamp(25px, 6vw, 44px);
+      border: 1px solid rgba(255,255,255,.65); border-radius: 23px;
+      color: #554757; text-align: left;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(255,226,190,.48), transparent 35%),
+        linear-gradient(145deg, #fffefa, var(--cream));
+      box-shadow: 0 25px 75px rgba(0,0,0,.42), inset 0 0 0 7px rgba(216,173,116,.09);
+    }
+    .letter::before {
+      content: "✧"; position: absolute; top: 12px; right: 20px;
+      color: rgba(180,122,66,.22); font: 52px Georgia, serif;
+    }
+    .eyebrow { margin: 0 0 12px; color: #b47a42; font-size: 11px; font-weight: 800; letter-spacing: 3px; }
+    .letter h2 { margin: 0 0 18px; color: #654456; font: 500 clamp(29px,6vw,40px)/1.2 Georgia,serif; }
+    .letter h2 span { color: #c65e79; font-style: italic; overflow-wrap: anywhere; }
+    .letter p { color: #625967; line-height: 1.9; margin: 0 0 14px; }
+    .sign { margin-top: 23px; color: #96615b; text-align: right; font: italic 20px Georgia,serif; }
+    .sign strong { display: block; margin-top: 6px; color: #c16380; font-size: 25px; font-weight: 500; }
+    .actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 19px; }
+    .footer { margin-top: 36px; color: rgba(255,255,255,.48); font-size: 12px; letter-spacing: .2px; }
+
+    .toast {
+      position: fixed; z-index: 10; left: 50%; bottom: 22px;
+      transform: translate(-50%, 15px); padding: 11px 17px;
+      color: #3c3040; background: #fff0cc; border-radius: 30px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.3); opacity: 0;
+      transition: opacity .3s, transform .3s; pointer-events: none;
+      width: max-content; max-width: 90%;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%,0); }
+    .heart {
+      position: fixed; z-index: 4; bottom: -35px; pointer-events: none;
+      color: var(--pink); text-shadow: 0 0 12px rgba(255,128,169,.7);
+      animation: float 5.5s linear forwards;
+    }
+
+    @keyframes twinkle { to { opacity: .2; transform: scale(.55); } }
+    @keyframes hint { to { opacity: .42; transform: translateY(4px); } }
+    @keyframes float { to { transform: translateY(-110vh) rotate(35deg); opacity: 0; } }
+    @keyframes skyDrift { to { transform: translate3d(2%, -2%, 0); } }
+    @keyframes auroraFloat { to { transform: translate(12vw, 8vh) scale(1.18); } }
+    @keyframes giftHover { 0%,100% { translate: 0 0; } 50% { translate: 0 -7px; } }
+    @keyframes musicPulse { 50% { text-shadow: 0 0 12px var(--gold); transform: scale(1.12); } }
+
+    .secret-area { margin: 14px auto 0; }
+    .secret-btn {
+      color: #f5eaff;
+      border: 1px solid rgba(198,167,255,.45);
+      background: linear-gradient(120deg, rgba(105,74,157,.55), rgba(183,91,151,.38));
+      box-shadow: 0 8px 26px rgba(110,75,177,.16), inset 0 1px 0 rgba(255,255,255,.12);
+    }
+    .secret-btn:hover {
+      box-shadow: 0 12px 34px rgba(166,111,220,.3);
+      border-color: rgba(255,226,160,.75);
+    }
+    .rick-overlay {
+      position: fixed; inset: 0; z-index: 20;
+      display: grid; place-items: center; padding: 22px;
+      background: rgba(5,3,18,.88);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      opacity: 0; visibility: hidden;
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+    .rick-overlay.visible { opacity: 1; visibility: visible; }
+    .rick-panel {
+      position: relative; width: min(900px, 100%);
+      padding: 14px; border: 1px solid rgba(247,223,155,.45);
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(54,37,82,.98), rgba(20,15,43,.98));
+      box-shadow: 0 24px 90px rgba(0,0,0,.62), 0 0 45px rgba(168,126,255,.18);
+      transform: translateY(18px) scale(.97);
+      transition: transform .4s cubic-bezier(.2,.8,.2,1);
+    }
+    .rick-overlay.visible .rick-panel { transform: translateY(0) scale(1); }
+    .rick-heading {
+      margin: 4px 48px 13px 4px; color: var(--gold);
+      font: 500 clamp(20px,4vw,28px)/1.2 Georgia,serif;
+      text-align: center;
+    }
+    .rick-video {
+      position: relative; width: 100%; aspect-ratio: 16 / 9;
+      overflow: hidden; border-radius: 12px; background: #05040b;
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+    }
+    .rick-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .rick-close {
+      position: absolute; top: 9px; right: 10px; z-index: 2;
+      width: 38px; height: 38px; border: 1px solid rgba(255,255,255,.22);
+      border-radius: 50%; color: white; background: rgba(255,255,255,.1);
+      font-size: 23px; line-height: 1; transition: background .2s, transform .2s;
+    }
+    .rick-close:hover { background: rgba(255,255,255,.22); transform: rotate(90deg); }
+    .rick-caption { margin: 12px 4px 3px; color: rgba(255,255,255,.65); font-size: 12px; text-align: center; }
+
+    @media (max-width: 520px) {
+      .container { padding-top: 78px; }
+      .music-toggle { top: 12px; right: 12px; min-height: 39px; font-size: 12px; }
+      .gift-area { height: 260px; }
+      .gift { transform: scale(.9); }
+      .gift:hover { transform: translateY(-5px) scale(.9); }
+      .gift-area.opened .gift { transform: scale(.88); }
+      .actions .btn { flex: 1 1 180px; }
+      .tag { letter-spacing: 2px; font-size: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important; scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="aurora second" aria-hidden="true"></div>
+  <div class="stars" id="stars" aria-hidden="true"></div>
+  <button class="music-toggle" id="musicToggle" type="button" aria-pressed="false" aria-label="Bật nhạc nền">
+    <span class="music-icon" aria-hidden="true">♫</span><span id="musicLabel">Bật nhạc nền</span>
+  </button>
+  <main class="container">
+    <div class="tag">✦ 19 THÁNG 11 · MEN'S DAY ✦</div>
+    <h1>Một món quà nhỏ <em>dành cho bạn</em></h1>
+    <p class="intro">M nhập tên r mở quà đi tk e, t viết lời chúc cho m r đó nhóc!!!</p>
+
+    <div class="name-area">
+      <label for="recipientName">Gửi đến:</label>
+      <input id="recipientName" type="text" maxlength="40" placeholder="Nhập tên người nhận..." value="Tên gì cu???" autocomplete="off">
+    </div>
+
+    <section class="gift-area" id="giftArea" aria-label="Hộp quà 19 tháng 11">
+      <div class="gift-glow"></div>
+      <button class="gift" id="giftButton" type="button" aria-label="Chạm để mở hộp quà">
+        <span class="bow"><i></i></span><span class="lid"></span><span class="box"></span>
+      </button>
+      <div class="gift-hint">✧ Chạm vào hộp quà để khám phá ✧</div>
+    </section>
+    <button class="btn primary" id="openButton" type="button">✧ Mở món quà ✧</button>
+    <div class="secret-area"><button class="btn secret-btn" id="rickButton" type="button">✦ Mở món quà bí mật ✦</button></div>
+
+    <section class="letter-wrap" id="letterWrap" aria-live="polite">
+      <article class="letter">
+        <p class="eyebrow">A LITTLE NOTE FOR YOU · 19.11</p>
+        <h2>Gửi <span id="letterName">Tên gì cu???</span>,</h2>
+        <p>Nhân ngày Quốc tế Nam giới 19/11, chúc m luôn bị chich some</p>
+        <p>Mong rằng mỗi ngày của m đều như cc!, nhưng luôn có vong ở bên. </p>
+        <p>CHÚC M LUÔN TRỞ THÀNH LỐP! Biết tặng quà cho t kh tuất </p>
+        <p>Đùa chứ, chúc công cụ của ta có ngày 19/11 vui vẻ, dù dài 10m hay ngắn 10cm thì tụi m là nhưng công cụ quý giá</p>
+        <div class="sign">Thân gửi,<strong>Từ anh Phúc đẹp trai!!!</strong></div>
+      </article>
+      <div class="actions">
+        <button class="btn secondary" id="againButton" type="button">↻ Gói quà lại</button>
+      </div>
+    </section>
+    <footer class="footer">Được gửi đi bằng sự chân thành(hoặc là kh)<span style="color:#ff91aa">♥</span> · Made with don't care</footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <section class="rick-overlay" id="rickOverlay" role="dialog" aria-modal="true" aria-labelledby="rickHeading" aria-hidden="true">
+      <div class="rick-panel">
+        <button class="rick-close" id="rickClose" type="button" aria-label="Đóng video">×</button>
+        <h2 class="rick-heading" id="rickHeading">✧ Bí mật dành riêng cho bạn ✧</h2>
+        <div class="rick-video" id="rickVideo"></div>
+        <p class="rick-caption">Một món quà bất ngờ không thể nào quên. 😌</p>
+      </div>
+    </section>
+
+  <script>
+    (() => {
+      "use strict";
+      const byId = (id) => document.getElementById(id);
+      const stars = byId("stars");
+      const giftArea = byId("giftArea");
+      const giftButton = byId("giftButton");
+      const openButton = byId("openButton");
+      const letterWrap = byId("letterWrap");
+      const recipientInput = byId("recipientName");
+      const letterName = byId("letterName");
+      const toast = byId("toast");
+      const musicToggle = byId("musicToggle");
+      const musicLabel = byId("musicLabel");
+      const rickButton = byId("rickButton");
+      const rickOverlay = byId("rickOverlay");
+      const rickVideo = byId("rickVideo");
+      const rickClose = byId("rickClose");
+      let audioContext = null;
+      let musicNodes = [];
+      let musicOn = false;
+      let isOpened = false;
+      let toastTimer = null;
+
+      // Tạo nền sao lấp lánh.
+      for (let i = 0; i < 65; i += 1) {
+        const star = document.createElement("span");
+        star.className = "star";
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.animationDelay = `${Math.random() * 3}s`;
+        star.style.animationDuration = `${2 + Math.random() * 3}s`;
+        stars.appendChild(star);
+      }
+
+      // Nhạc nền fantasy được tạo trực tiếp bằng Web Audio API, không cần tải tệp âm thanh.
+      // Trình duyệt chỉ cho phép phát sau thao tác chủ động của người dùng.
+      function startMusic() {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) {
+          showToast("Trình duyệt này chưa hỗ trợ nhạc nền.");
+          return;
+        }
+        if (!audioContext) audioContext = new AudioContextClass();
+        audioContext.resume();
+
+        const master = audioContext.createGain();
+        master.gain.setValueAtTime(0.0001, audioContext.currentTime);
+        master.gain.exponentialRampToValueAtTime(0.075, audioContext.currentTime + 1.8);
+        master.connect(audioContext.destination);
+        musicNodes.push(master);
+
+        // Hợp âm ambient nhẹ, chậm và êm; mỗi nốt là âm thanh tổng hợp nguyên bản.
+        const notes = [196.00, 246.94, 293.66, 369.99];
+        notes.forEach((frequency, index) => {
+          const oscillator = audioContext.createOscillator();
+          const voiceGain = audioContext.createGain();
+          const filter = audioContext.createBiquadFilter();
+          oscillator.type = index === 1 ? "sine" : "triangle";
+          oscillator.frequency.value = frequency;
+          filter.type = "lowpass";
+          filter.frequency.value = 850;
+          voiceGain.gain.value = index === 0 ? 0.24 : 0.105;
+          oscillator.connect(filter);
+          filter.connect(voiceGain);
+          voiceGain.connect(master);
+          oscillator.start();
+          musicNodes.push(oscillator, voiceGain, filter);
+        });
+
+        // Âm ngân cao rất nhỏ tạo cảm giác huyền ảo.
+        const shimmer = audioContext.createOscillator();
+        const shimmerGain = audioContext.createGain();
+        shimmer.type = "sine";
+        shimmer.frequency.value = 587.33;
+        shimmerGain.gain.value = 0.018;
+        shimmer.connect(shimmerGain);
+        shimmerGain.connect(master);
+        shimmer.start();
+        musicNodes.push(shimmer, shimmerGain);
+
+        musicOn = true;
+        musicToggle.setAttribute("aria-pressed", "true");
+        musicToggle.setAttribute("aria-label", "Tắt nhạc nền");
+        musicLabel.textContent = "Tắt nhạc nền";
+      }
+
+      function stopMusic() {
+        if (audioContext && musicNodes.length) {
+          const now = audioContext.currentTime;
+          const master = musicNodes.find((node) => node instanceof GainNode);
+          if (master) {
+            master.gain.cancelScheduledValues(now);
+            master.gain.setTargetAtTime(0.0001, now, 0.18);
+          }
+          window.setTimeout(() => {
+            musicNodes.forEach((node) => {
+              try {
+                if (typeof node.stop === "function") node.stop();
+                if (typeof node.disconnect === "function") node.disconnect();
+              } catch (_) { /* Nút âm thanh có thể đã dừng. */ }
+            });
+            musicNodes = [];
+          }, 900);
+        }
+        musicOn = false;
+        musicToggle.setAttribute("aria-pressed", "false");
+        musicToggle.setAttribute("aria-label", "Bật nhạc nền");
+        musicLabel.textContent = "Bật nhạc nền";
+      }
+
+      musicToggle.addEventListener("click", () => {
+        if (musicOn) stopMusic();
+        else startMusic();
+      });
+
+      function openRickroll() {
+        rickVideo.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" title="Rick Astley - Never Gonna Give You Up" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+        rickOverlay.classList.add("visible");
+        rickOverlay.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        rickClose.focus();
+      }
+
+      function closeRickroll() {
+        rickOverlay.classList.remove("visible");
+        rickOverlay.setAttribute("aria-hidden", "true");
+        rickVideo.innerHTML = "";
+        document.body.style.overflow = "";
+        rickButton.focus();
+      }
+
+      rickButton.addEventListener("click", openRickroll);
+      rickClose.addEventListener("click", closeRickroll);
+      rickOverlay.addEventListener("click", (event) => {
+        if (event.target === rickOverlay) closeRickroll();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && rickOverlay.classList.contains("visible")) {
+          closeRickroll();
+        }
+      });
+
+      function getName() {
+        return recipientInput.value.trim() || "Người bạn đặc biệt";
+      }
+
+      function updateName() {
+        letterName.textContent = getName();
+      }
+      recipientInput.addEventListener("input", updateName);
+      recipientInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") openGift();
+      });
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2200);
+      }
+
+      function createHearts() {
+        const symbols = ["♥", "♡", "✦", "✧"];
+        for (let i = 0; i < 14; i += 1) {
+          window.setTimeout(() => {
+            const heart = document.createElement("span");
+            heart.className = "heart";
+            heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            heart.style.left = `${5 + Math.random() * 90}%`;
+            heart.style.fontSize = `${14 + Math.random() * 18}px`;
+            heart.style.animationDuration = `${4 + Math.random() * 3}s`;
+            document.body.appendChild(heart);
+            heart.addEventListener("animationend", () => heart.remove(), { once: true });
+          }, i * 100);
+        }
+      }
+
+      function createMagicDust() {
+        const colors = ["#ffe7a6", "#d7c4ff", "#ffb9d1", "#ffffff"];
+        for (let i = 0; i < 24; i += 1) {
+          const particle = document.createElement("span");
+          particle.className = "heart";
+          particle.textContent = i % 3 === 0 ? "✦" : "✧";
+          particle.style.left = `${35 + Math.random() * 30}%`;
+          particle.style.bottom = `${18 + Math.random() * 12}%`;
+          particle.style.color = colors[i % colors.length];
+          particle.style.fontSize = `${10 + Math.random() * 13}px`;
+          particle.style.animationDuration = `${2.8 + Math.random() * 2}s`;
+          document.body.appendChild(particle);
+          particle.addEventListener("animationend", () => particle.remove(), { once: true });
+        }
+      }
+
+      function openGift() {
+        updateName();
+        if (isOpened) {
+          letterWrap.scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
+        isOpened = true;
+        giftArea.classList.add("opened");
+        openButton.hidden = true;
+        createHearts();
+        createMagicDust();
+        window.setTimeout(() => {
+          letterWrap.classList.add("visible");
+          letterWrap.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 500);
+      }
+      giftButton.addEventListener("click", openGift);
+      openButton.addEventListener("click", openGift);
+
+      byId("againButton").addEventListener("click", () => {
+        isOpened = false;
+        giftArea.classList.remove("opened");
+        letterWrap.classList.remove("visible");
+        openButton.hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        showToast("Món quà đã được gói lại! 🎁");
+      });
+    })();
+  </script>
+</body>
+</html>
