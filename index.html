@@ -295,6 +295,155 @@
       box-shadow: 0 12px 34px rgba(166,111,220,.3);
       border-color: rgba(255,226,160,.75);
     }
+    /* ===== KHU VỰC THỬ THÁCH IQ ===== */
+    .troll-area {
+      margin: 30px auto 0;
+      padding: 24px 16px;
+      max-width: 540px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 20px;
+      background: rgba(255,255,255,.045);
+      backdrop-filter: blur(12px);
+    }
+    .troll-title {
+      color: var(--gold);
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 800;
+      margin: 0 0 20px;
+    }
+    .quiz-area { margin: 28px 0; }
+    .quiz-area p { color: #fff1d6; font-weight: 600; }
+    .quiz-option { min-width: 100px; }
+    .quiz-option:hover { background: rgba(255,157,187,.2); }
+    #quizResult { min-height: 26px; }
+
+    @keyframes screenShake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-9px); }
+      40% { transform: translateX(9px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+    }
+    body.shake { animation: screenShake .4s ease; }
+
+    /* ===== HỘP THỬ THÁCH 5 CÂU ===== */
+    .game-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      background: rgba(5,3,18,.92);
+      backdrop-filter: blur(16px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .35s, visibility .35s;
+    }
+    .game-overlay.visible { opacity: 1; visibility: visible; }
+    .game-panel {
+      position: relative;
+      width: min(620px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 30px 22px;
+      border: 1px solid rgba(247,223,155,.35);
+      border-radius: 22px;
+      text-align: center;
+      background: linear-gradient(145deg,#30204d,#100d27);
+      box-shadow: 0 25px 90px rgba(0,0,0,.65);
+      transform: scale(.95);
+      transition: transform .35s;
+    }
+    .game-overlay.visible .game-panel { transform: scale(1); }
+    .game-panel h2 {
+      color: var(--gold);
+      font: 500 clamp(24px,5vw,36px) Georgia,serif;
+      margin: 5px 42px 25px;
+    }
+    .game-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 50%;
+      color: white;
+      background: rgba(255,255,255,.08);
+      font-size: 23px;
+      line-height: 1;
+    }
+    .game-close:hover { background: rgba(255,255,255,.2); }
+    .game-progress { margin-bottom: 28px; }
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      color: var(--gold);
+      font-size: 12px;
+      margin-bottom: 9px;
+      font-weight: 700;
+    }
+    .progress-track {
+      height: 9px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: rgba(255,255,255,.12);
+    }
+    #progressFill {
+      height: 100%;
+      width: 0%;
+      border-radius: 20px;
+      background: linear-gradient(90deg,#a99aff,#f7df9b);
+      transition: width .5s;
+    }
+    .game-stage {
+      min-height: 245px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 17px;
+    }
+    .game-stage h3 { color: var(--gold); font: 25px Georgia,serif; margin: 0; }
+    .game-stage p { color: rgba(255,255,255,.76); line-height: 1.8; margin: 0; }
+    .game-options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .game-option {
+      min-width: 120px;
+      padding: 13px 18px;
+      color: white;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 12px;
+      background: rgba(255,255,255,.08);
+      transition: .25s;
+    }
+    .game-option:hover:not(:disabled) {
+      border-color: var(--gold);
+      background: rgba(247,223,155,.15);
+      transform: translateY(-3px);
+    }
+    .game-option:disabled { cursor: default; opacity: .85; }
+    .game-feedback {
+      min-height: 25px;
+      color: var(--pink) !important;
+      font-weight: 700;
+    }
+    .game-footer { margin: 25px 0 0; font-size: 12px; color: rgba(255,255,255,.42); }
+    .game-stage,
+    .game-stage * {
+      font-family: Arial, sans-serif !important;
+      font-variant-ligatures: none !important;
+      letter-spacing: 0 !important;
+      word-spacing: 0 !important;
+      text-rendering: auto !important;
+    }
+
     .rick-overlay {
       position: fixed; inset: 0; z-index: 20;
       display: grid; place-items: center; padding: 22px;
@@ -360,8 +509,8 @@
     <span class="music-icon" aria-hidden="true">♫</span><span id="musicLabel">Bật nhạc nền</span>
   </button>
   <main class="container">
-    <div class="tag">✦ 19 THÁNG 11 · MEN'S DAY ✦</div>
-    <h1>Một món quà nhỏ <em>dành cho bạn</em></h1>
+    <div class="tag">✦ 19 THÁNG 11 · NGÀY CỦA NHỮNG NG GAY ✦</div>
+    <h1>Một món quà nhỏ <em>dành tk e của t</em></h1>
     <p class="intro">M nhập tên r mở quà đi tk e, t viết lời chúc cho m r đó nhóc!!!</p>
 
     <div class="name-area">
@@ -374,19 +523,38 @@
       <button class="gift" id="giftButton" type="button" aria-label="Chạm để mở hộp quà">
         <span class="bow"><i></i></span><span class="lid"></span><span class="box"></span>
       </button>
-      <div class="gift-hint">✧ Chạm vào hộp quà để khám phá ✧</div>
+      <div class="gift-hint">✧ Bấm vô để nhận quà từ anh Phúc đẹp trai ✧</div>
     </section>
     <button class="btn primary" id="openButton" type="button">✧ Mở món quà ✧</button>
     <div class="secret-area"><button class="btn secret-btn" id="rickButton" type="button">✦ Mở món quà bí mật ✦</button></div>
+
+    <section class="troll-area" aria-label="Khu vực thử thách IQ">
+      <p class="troll-title">🎭 KHU VỰC THỬ THÁCH IQ</p>
+
+      <div class="quiz-area">
+        <p>Đố mày: Ai là người đẹp trai nhất thế giới?</p>
+        <div class="actions">
+          <button class="btn secondary quiz-option" type="button">Tao</button>
+          <button class="btn secondary quiz-option" type="button">Anh Phúc</button>
+          <button class="btn secondary quiz-option" type="button">Không ai cả</button>
+        </div>
+        <p id="quizResult" aria-live="polite"></p>
+      </div>
+
+      <button class="btn secret-btn" id="surpriseButton" type="button">
+        🎁 Nhận bất ngờ
+      </button>
+    </section>
 
     <section class="letter-wrap" id="letterWrap" aria-live="polite">
       <article class="letter">
         <p class="eyebrow">A LITTLE NOTE FOR YOU · 19.11</p>
         <h2>Gửi <span id="letterName">Tên gì cu???</span>,</h2>
-        <p>Nhân ngày Quốc tế Nam giới 19/11, chúc m luôn bị chich some</p>
+        <p>Nhân ngày Quốc tế Nam giới 19/11, chúc m luôn bị some</p>
+        <p>Mong m chỉnh lại cái não để khôn hơn, xã hội cảm ơn m.</p>
         <p>Mong rằng mỗi ngày của m đều như cc!, nhưng luôn có vong ở bên. </p>
         <p>CHÚC M LUÔN TRỞ THÀNH LỐP! Biết tặng quà cho t kh tuất </p>
-        <p>Đùa chứ, chúc công cụ của ta có ngày 19/11 vui vẻ, dù dài 10m hay ngắn 10cm thì tụi m là nhưng công cụ quý giá</p>
+        <p>Đùa chứ, chúc công cụ của ta có ngày 19/11 vui vẻ, dù peter dài 10m hay ngắn 10cm thì tụi m là nhưng công cụ quý giá</p>
         <div class="sign">Thân gửi,<strong>Từ anh Phúc đẹp trai!!!</strong></div>
       </article>
       <div class="actions">
@@ -395,6 +563,26 @@
     </section>
     <footer class="footer">Được gửi đi bằng sự chân thành(hoặc là kh)<span style="color:#ff91aa">♥</span> · Made with don't care</footer>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+
+  <section class="game-overlay" id="gameOverlay" role="dialog" aria-modal="true" aria-labelledby="gameHeading" aria-hidden="true">
+    <div class="game-panel">
+      <button class="game-close" id="gameClose" type="button" aria-label="Đóng thử thách">×</button>
+      <h2 id="gameHeading"> THỬ THÁCH độ ảo tưởng: PHẦN THƯỞNG XỨNG ĐÁNG KHI HOÀN THÀNH</h2>
+      <div class="game-progress">
+        <div class="progress-info">
+          <span id="levelLabel">LEVEL 01 / 05</span>
+          <span id="progressLabel">0%</span>
+        </div>
+        <div class="progress-track">
+          <div id="progressFill"></div>
+        </div>
+      </div>
+      <div class="game-stage" id="gameStage"></div>
+      <p class="game-footer">Trả lời thật tỉnh táo nhé, đừng để ảo tưởng dẫn lối. 💀</p>
+    </div>
+  </section>
+
     <section class="rick-overlay" id="rickOverlay" role="dialog" aria-modal="true" aria-labelledby="rickHeading" aria-hidden="true">
       <div class="rick-panel">
         <button class="rick-close" id="rickClose" type="button" aria-label="Đóng video">×</button>
@@ -422,6 +610,14 @@
       const rickOverlay = byId("rickOverlay");
       const rickVideo = byId("rickVideo");
       const rickClose = byId("rickClose");
+      const gameOverlay = byId("gameOverlay");
+      const gameStage = byId("gameStage");
+      const gameClose = byId("gameClose");
+      const progressFill = byId("progressFill");
+      const progressLabel = byId("progressLabel");
+      const levelLabel = byId("levelLabel");
+      const surpriseButton = byId("surpriseButton");
+      const quizResult = byId("quizResult");
       let audioContext = null;
       let musicNodes = [];
       let musicOn = false;
@@ -494,7 +690,7 @@
       function stopMusic() {
         if (audioContext && musicNodes.length) {
           const now = audioContext.currentTime;
-          const master = musicNodes.find((node) => node instanceof GainNode);
+          const master = musicNodes.find((node) => typeof GainNode !== "undefined" && node instanceof GainNode);
           if (master) {
             master.gain.cancelScheduledValues(now);
             master.gain.setTargetAtTime(0.0001, now, 0.18);
@@ -536,13 +732,15 @@
         rickButton.focus();
       }
 
-      rickButton.addEventListener("click", openRickroll);
       rickClose.addEventListener("click", closeRickroll);
       rickOverlay.addEventListener("click", (event) => {
         if (event.target === rickOverlay) closeRickroll();
       });
       document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && rickOverlay.classList.contains("visible")) {
+        if (event.key !== "Escape") return;
+        if (gameOverlay.classList.contains("visible")) {
+          closeChallenge();
+        } else if (rickOverlay.classList.contains("visible")) {
           closeRickroll();
         }
       });
@@ -565,6 +763,221 @@
         window.clearTimeout(toastTimer);
         toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2200);
       }
+
+      // ===== THỬ THÁCH 5 CÂU HỎI CRUSH VÀ LỐP DỰ PHÒNG =====
+      const trollQuestions = [
+        {
+          title: "💀 CÂU HỎI ĐẦU TIÊN",
+          question: 'Khi đi thi, nếu đáp án đúng là câu D thì mày chỉ cần nói: "Tao là gì trong mắt cô ấy?" Mày biết tại sao không?',
+          options: [
+            "A. Người yêu tương lai",
+            "B. Người thương thầm",
+            "C. Người đặc biệt",
+            "D. Lựa chọn cuối cùng"
+          ],
+          answer: 3,
+          correct: "CHÍNH XÁC! Vì D là lựa chọn cuối cùng, cũng như vị trí của mày trong mắt cô ấy. 💀",
+          wrong: "Sai rồi! Đến đáp án D còn không chọn được thì mong gì cô ấy chọn mày. 😂"
+        },
+        {
+          title: "🛞 LỐP DỰ PHÒNG VIP",
+          question: "Crush không thích mày, nhưng cứ buồn là lại nhắn tin tìm mày. Vậy mày đang ở vị trí nào?",
+          options: [
+            "A. Người yêu tương lai",
+            "B. Lốp dự phòng hạng VIP",
+            "C. Tri kỷ khác giới",
+            "D. Người quan trọng nhất"
+          ],
+          answer: 1,
+          correct: "CHUẨN! Mày không phải người được chọn, mày chỉ là bánh dự phòng thôi. 💀",
+          wrong: "Ảo tưởng vừa thôi! Người ta còn chẳng xem mày là phương án B. =)))"
+        },
+        {
+          title: "💔 CRUSH CÓ NGƯỜI YÊU",
+          question: "Crush vừa đăng ảnh với người yêu mới. Mày nên làm gì?",
+          options: [
+            "A. Chúc phúc cho họ",
+            "B. Âm thầm khóc rồi thả tim",
+            "C. Hỏi người yêu nó có cần lốp dự phòng không",
+            "D. Đăng story thất tình"
+          ],
+          answer: 2,
+          correct: "Đúng là người có kinh nghiệm! Đã làm lốp thì phải có tinh thần chuyên nghiệp. 😂",
+          wrong: "Thôi đừng diễn nữa, tim mày đang vỡ thành từng mảnh rồi. Hhhhhh"
+        },
+        {
+          title: "📱 TIN NHẮN CHỜ",
+          question: "Tại sao crush luôn trả lời tin nhắn của mày sau 3 tiếng?",
+          options: [
+            "A. Vì người ta bận",
+            "B. Vì người ta đang suy nghĩ về mày",
+            "C. Vì thời gian của cô ấy không giành cho cái lốp",
+            "D. Vì người ta đang nhớ mày"
+          ],
+          answer: 2,
+          correct: "Sự thật mất lòng! Tin nhắn của mày chắc đang xếp hàng sau 7749 người. 💀",
+          wrong: "Mày đang tự viết kịch bản tình yêu cho chính mình đấy à? =)))"
+        },
+        {
+          title: "👑 CÂU HỎI CUỐI CÙNG",
+          question: "Nếu crush chỉ tìm mày khi không có ai khác, mày nên làm gì?",
+          options: [
+            "A. Tiếp tục chờ đợi",
+            "B. Tự giác rời khỏi vị trí lốp",
+            "C. Mua thêm cái bơm để phục vụ người ta",
+            "D. Tiếp tục hy vọng"
+          ],
+          answer: 1,
+          correct: "TỈNH NGỘ RỒI! Hãy nhớ: mày là con người, không phải bánh dự phòng! 😂",
+          wrong: "Thôi xong, ca này chắc phải gọi chuyên gia tình cảm rồi. 💀"
+        }
+      ];
+
+      let currentLevel = 0;
+      let levelTimer = null;
+
+      function shakeScreen() {
+        document.body.classList.remove("shake");
+        void document.body.offsetWidth;
+        document.body.classList.add("shake");
+        window.setTimeout(() => document.body.classList.remove("shake"), 450);
+      }
+
+      function startChallenge() {
+        if (levelTimer !== null) {
+          window.clearTimeout(levelTimer);
+          levelTimer = null;
+        }
+        currentLevel = 0;
+        gameOverlay.classList.add("visible");
+        gameOverlay.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        renderLevel();
+        gameClose.focus();
+      }
+
+      function closeChallenge() {
+        if (levelTimer !== null) {
+          window.clearTimeout(levelTimer);
+          levelTimer = null;
+        }
+        gameOverlay.classList.remove("visible");
+        gameOverlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        rickButton.focus();
+      }
+
+      function updateProgress() {
+        const percent = currentLevel * 20;
+        progressFill.style.width = `${percent}%`;
+        progressLabel.textContent = `${percent}%`;
+        levelLabel.textContent = `LEVEL ${String(currentLevel + 1).padStart(2, "0")} / 05`;
+      }
+
+      function renderLevel() {
+        updateProgress();
+        const question = trollQuestions[currentLevel];
+
+        gameStage.innerHTML = `
+          <h3>${question.title}</h3>
+          <p>${question.question}</p>
+          <div class="game-options">
+            ${question.options.map((option, index) => `
+              <button class="game-option" data-option="${index}" type="button">
+                ${option}
+              </button>
+            `).join("")}
+          </div>
+          <p class="game-feedback" id="quizFeedback">
+            Chọn đáp án mà mày cho là đúng đi... 😂
+          </p>
+        `;
+
+        const buttons = gameStage.querySelectorAll("[data-option]");
+        const feedback = byId("quizFeedback");
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const selected = Number(button.dataset.option);
+            if (selected === question.answer) {
+              feedback.textContent = question.correct;
+              buttons.forEach((item) => { item.disabled = true; });
+              button.style.borderColor = "var(--gold)";
+              button.style.background = "rgba(247,223,155,.2)";
+              levelTimer = window.setTimeout(nextLevel, 1800);
+            } else {
+              feedback.textContent = question.wrong;
+              shakeScreen();
+            }
+          });
+        });
+      }
+
+      function nextLevel() {
+        levelTimer = null;
+        currentLevel += 1;
+        if (currentLevel >= trollQuestions.length) {
+          showFinalReward();
+          return;
+        }
+        renderLevel();
+      }
+
+      function showFinalReward() {
+        progressFill.style.width = "100%";
+        progressLabel.textContent = "100%";
+        levelLabel.textContent = "ALL LEVELS COMPLETED";
+        gameStage.innerHTML = `
+          <h3>🏆 CHÚC MỪNG!</h3>
+          <p>Mày đã vượt qua toàn bộ thử thách. Một phần thưởng đặc biệt đang chờ đợi...</p>
+          <h3>🎁 ĐANG CHUẨN BỊ QUÀ...</h3>
+          <p class="game-feedback">3... 2... 1...</p>
+          <button class="btn primary" id="rewardButton" type="button">
+            BẤM VÀO NHẬN PHẦN THƯỞNG
+          </button>
+        `;
+
+        byId("rewardButton").addEventListener("click", () => {
+          gameOverlay.classList.remove("visible");
+          gameOverlay.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+          openRickroll();
+        });
+      }
+
+      gameClose.addEventListener("click", closeChallenge);
+      gameOverlay.addEventListener("click", (event) => {
+        if (event.target === gameOverlay) closeChallenge();
+      });
+      rickButton.addEventListener("click", startChallenge);
+
+      // Câu đố IQ ở bên ngoài trò chơi 5 câu.
+      document.querySelectorAll(".quiz-option").forEach((button) => {
+        button.addEventListener("click", () => {
+          if (button.textContent.trim() === "Anh Phúc") {
+            quizResult.textContent = "✅ CHÍNH XÁC! Đáp án đúng là ANH PHÚC đẹp trai nhất! 😎";
+            quizResult.style.color = "var(--gold)";
+            createHearts();
+          } else {
+            quizResult.textContent = "Error: Hệ thống phát hiện ng có IQ dưới 50, rất đáng lo ngại.😂";
+            quizResult.style.color = "var(--pink)";
+            shakeScreen();
+          }
+        });
+      });
+
+      surpriseButton.addEventListener("click", () => {
+        shakeScreen();
+        createHearts();
+        const messages = [
+          "Bất ngờ chưa? Không có gì đâu. 😂",
+          "Mày vừa nhận được một lời chúc... vô giá.",
+          "Phần thưởng: Một cái nhìn đầy thương hại.",
+          "Chúc mừng! Mày đã bị troll thành công."
+        ];
+        showToast(messages[Math.floor(Math.random() * messages.length)]);
+      });
+
 
       function createHearts() {
         const symbols = ["♥", "♡", "✦", "✧"];
